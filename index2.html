@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="giris">
+    <h1>ALISVERIS LISTESI</h1>
+
+    <input type="text" id="urun">
+    <button class="ekle" onclick="ekle()">LISTEYE EKLE</button>
+</div>
+<div id="container">
+<ul id="ol">
+    
+</ul>
+</div>
+
+    <script>
+var sayi=0;
+        function ekle(){
+           
+var ol= document.getElementById('ol');
+var urundiv=document.createElement('div');
+urundiv.className= 'uruncontainer';
+ol.appendChild(urundiv);
+
+var urunli=document.createElement('li');
+urunli.className='li';
+
+var urun=document.getElementById('urun').value;
+
+urundiv.appendChild(urunli);
+urunli.innerHTML=urun;
+
+var sil=document.createElement('button');
+sil.innerText='URUN SIL';
+
+urundiv.appendChild(sil);
+var alindi=document.createElement('button')
+alindi.innerText='ALINDI';
+
+urundiv.appendChild(alindi);
+
+var duzenle=document.createElement('button');
+
+urundiv.appendChild(duzenle);
+duzenle.innerHTML='DUZENLE';
+
+duzenle.addEventListener('click', function(){
+
+
+//var duzenle=document.createElement('div');
+urunli.innerHTML='';
+
+var duzenlekutusu=document.createElement('input');
+    var idkutu='id1'+sayi++;
+    urundiv.appendChild(duzenlekutusu);
+
+    duzenlekutusu.id='idkutu';
+    var yeniliste=document.getElementById('idkutu').value;
+    
+
+
+
+duzenlekutusu.oninput= ekle;
+
+function ekle(){
+    
+  
+    urunli.innerHTML=yeniliste;
+}
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+alindi.addEventListener('click', function(){
+    urunli.style.textDecoration = "line-through";
+})
+
+
+sil.addEventListener('click', function(){
+
+urundiv.parentNode.removeChild(urundiv);
+
+
+})
+
+
+sayi++;
+
+
+
+
+
+document.getElementById('urun').value='';
+
+}
+    </script>
+</body>
+</html>
